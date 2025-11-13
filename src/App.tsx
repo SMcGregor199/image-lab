@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+export default function App(){
+  const handleSubmit = (formData) => {
+    console.log(formData.get('image').name);
+  };
+  return(
+   <>
+   <h1 id="form-title">Image Downloader</h1>
+   <form aria-labelledby="form-title" action={handleSubmit}>
+    <fieldset>
+      {/* The legend is used to describe (or title) the fieldset it is in*/}
+      <legend>Upload Image</legend>
+      {/* 
+        You can think of the label as telling the user what to do with the input 
+        The htmlFor attribute is used to connect the label to the input's id attribute
+        The name attribute is used to identify the input
+        The accept attribute is used to specify the type of file that can be uploaded
+      */}
+      <label htmlFor="image">Choose an image file to upload</label>
+      <input type="file" id="image" name="image" accept="image/*" />
+    </fieldset>
+    {/* 
+        The button is used to submit the form. 
+        type="submit" is used to signal to the browser that this button is connected to the form 
+    */}
+    <button type="submit">Upload</button>
+   </form>
+   </> 
   )
 }
-
-export default App
